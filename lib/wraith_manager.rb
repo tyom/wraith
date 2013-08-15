@@ -64,8 +64,8 @@ class WraithManager
         compare_file_name = "shots/#{label}/#{width}_#{compare_domain['label']}.png"
         base_file_name = "shots/#{label}/#{width}_#{base_domain['label']}.png"
 
-        wraith.capture_page_image compare_url, width, compare_file_name
-        wraith.capture_page_image base_url, width, base_file_name
+        wraith.capture_page_image wraith.engine, compare_url, width, compare_file_name
+        wraith.capture_page_image wraith.engine, base_url, width, base_file_name
       end
     end
   end

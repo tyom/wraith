@@ -7,6 +7,10 @@ class Wraith
     @config = YAML::load_file(config_name + '.yaml')
   end
 
+  def engine
+    @config['engine']
+  end
+
   def widths
     @config['screen_widths']
   end
@@ -33,8 +37,9 @@ class Wraith
     @config['paths']
   end
 
-  def capture_page_image (url, width, file_name)
-    puts `phantomjs snap.js "#{url}" "#{width}" "#{file_name}"`
+  def capture_page_image (engine, url, width, file_name)
+    file = engine == 'casperjs' ? 'capture' : 'snap'
+    puts `"#{engine}" "#{file}".js "#{url}" "#{width}" "#{file_name}"`
   end
 
   # Support for slimerjs, uncomment code below and comment out capture_page_image option above
